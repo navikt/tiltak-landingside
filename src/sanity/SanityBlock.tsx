@@ -1,17 +1,19 @@
-import React from 'react';
-import BlockContent from '@sanity/block-content-to-react';
-import { serializers } from './Serializer';
-//import { SanityBlockTypes } from './sanityTypes';
+import React from "react";
+import BlockContent from "@sanity/block-content-to-react";
+import { serializers } from "./serializer";
 
+/*
 interface Props {
-    content: any //SanityBlockTypes;
+  innhold: any; // TODO : Legge til riktig type-setting
 }
+*/
 
-const SanityBlocktype = (textblock: Props) => (
-            <BlockContent
-                blocks={textblock.content.content}
-                serializers={serializers}
-            />
-);
+const SanityBlocktype = ({ innhold }: { innhold: any }) => {
+  return (
+    <>
+      <BlockContent blocks={innhold.content} serializers={serializers} />
+    </>
+  );
+};
 
 export default SanityBlocktype;
