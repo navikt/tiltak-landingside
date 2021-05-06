@@ -6,3 +6,4 @@ require('dotenv').config({
             ? VAULT_PATH
             : path.join(__dirname, './../.env'),
 });
+

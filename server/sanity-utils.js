@@ -49,6 +49,7 @@ const checkbackupCacheInnhold = (res, fetchError) => {
 
 const fetchInnhold = (res) => {
     const query = sanityQuery();
+    console.log('query: ', query)
     client
         .fetch(query)
         .then((result) => {
