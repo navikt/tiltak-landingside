@@ -2,6 +2,7 @@
   "name": "tiltak-landingside",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/tiltak",
   "dependencies": {
     "@craco/craco": "^6.1.2",
     "@sanity/block-content-to-react": "^2.0.7",
