@@ -5,7 +5,7 @@ interface Innhold {
   env: string[];
 }
 
-export const BASE_URL = "/tiltak/sommerjobb";
+export const BASE_URL = "/tiltak";
 
 export const isProduction = (): boolean =>
   process.env.NODE_ENV === "production";
@@ -22,7 +22,6 @@ export const fetchsanityJSON = async (): Promise<Innhold> => {
     process.env.NODE_ENV === "production" ? "" : "http://localhost:3001";
   console.log("URL: ", `${url}${BASE_URL}/innhold`);
 
-  // http://localhost:3001/tiltak/innhold
   const response = await fetchdata(`${url}${BASE_URL}/innhold`);
   await status(response);
   return response.json();
