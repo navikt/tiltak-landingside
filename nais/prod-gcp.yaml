@@ -10,7 +10,7 @@ spec:
   team: arbeidsgiver
   port: 3000
   ingresses:
-    - https://arbeidsgiver.nav.no/tiltak
+    - https://tiltak.nav.no/tiltak
   liveness:
     path: /tiltak/internal/isReady
     initialDelay: 20
