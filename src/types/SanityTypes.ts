@@ -25,7 +25,7 @@ export interface Banner extends CommonBlock {
   borderlineColor: Color;
 }
 
-interface Menypunkt {
+export interface Menypunkt {
   linkTitle: string;
   path: {
     current: string;
@@ -73,6 +73,7 @@ interface LayoutType {
 export interface SeksjonType {
   content: SeksjonContent[];
   heading: string;
+  id: string;
   image: {
     _type: string;
     asset: {

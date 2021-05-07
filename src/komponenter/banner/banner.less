@@ -5,6 +5,10 @@
   background-color: #d0e0f1;
   margin-bottom: 7rem;
 
+  .typo-sidetittel {
+    font-size: 1.25rem;
+  }
+
   &--center {
     .banner__tekst {
       justify-content: center;
@@ -22,5 +26,17 @@
   &__bunnlinje {
     background-color: #a2c1e4;
     min-height: 0.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .typo-sidetittel {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .typo-sidetittel {
+      font-size: 2.5rem;
+    }
   }
 }

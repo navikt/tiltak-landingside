@@ -1,7 +1,13 @@
 .meny {
   background-color: white;
-  max-width: 14rem;
-  max-height: 33rem;
+  max-width: 15rem;
+  position: sticky;
+  top: 19rem;
+  margin-bottom: 0.75rem;
+  border-radius: 4px;
+  height: fit-content;
+  width: fit-content;
+  padding-bottom: 2rem;
 
   &__header-ikon {
     display: flex;
@@ -23,9 +29,13 @@
 
   &__lenke {
     padding: 0.5rem 0;
+    &--bold {
+      font-weight: 600;
+      color: black !important;
+      text-decoration: none !important;
+    }
   }
 
   @media (min-width: 768px) {
-    min-width: 13.3125rem;
   }
 }

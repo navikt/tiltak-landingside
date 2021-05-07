@@ -1,0 +1,34 @@
+apiVersion: nais.io/v1alpha1
+kind: Application
+metadata:
+  name: tiltak
+  namespace: arbeidsgiver
+  labels:
+    team: arbeidsgiver
+spec:
+  image: {{ version }}
+  team: arbeidsgiver
+  port: 3000
+  ingresses:
+    - https://arbeidsgiver.nav.no/tiltak
+  liveness:
+    path: /tiltak/internal/isReady
+    initialDelay: 20
+  readiness:
+    path: /tiltak/internal/isReady
+    initialDelay: 20
+  replicas:
+    min: 2
+    max: 2
+  accessPolicy:
+    outbound:
+      external:
+        - host: 1ccbnh9g.api.sanity.io
+        - host: www.nav.no
+  envFrom:
+    - secret: tiltak-landingside
+  env:
+    - name: SANITY_CACHE_TTL
+      value: "600"
+    - name: SANITY_CACHE_CHECK
+      value: "60"

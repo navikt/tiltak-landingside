@@ -30,7 +30,6 @@ const ContextProvider: FunctionComponent<Props> = (props) => {
   useEffect(() => {
     fetchsanityJSON()
       .then((result) => {
-        console.log("res", result.data);
         setEnv(result.env);
         setData({
           banner: result.data[0],

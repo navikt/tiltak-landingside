@@ -56,7 +56,7 @@ const Seksjon: FunctionComponent<Props> = (props) => {
   };
 
   return (
-    <div className={cls.className}>
+    <div className={cls.className} id={seksjon?.id ?? ""}>
       <div className={cls.element("header")}>
         {seksjon?.image?.asset?._ref && (
           <div className={cls.element("headikon")}>
@@ -68,9 +68,7 @@ const Seksjon: FunctionComponent<Props> = (props) => {
         )}
         <Systemtittel>{seksjon.heading ?? ""}</Systemtittel>
         <div className={cls.element("block-container")}>
-          {seksjon?.content?.map((seksjon, index) => {
-            return getType(seksjon, index);
-          })}
+          {seksjon?.content?.map((seksjon, index) => getType(seksjon, index))}
         </div>
       </div>
     </div>
