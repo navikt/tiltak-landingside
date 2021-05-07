@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import SommerJobb from "./SommerJobb";
 import ContextProvider from "./ContextProvider";
 
+// main
 function App() {
   return (
     <BrowserRouter>
