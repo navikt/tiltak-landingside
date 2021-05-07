@@ -59,7 +59,8 @@
     "start-app": "cross-env ENABLE_EXTERNAL_MENU=true craco start",
     "dev-server": "cross-env PORT=3001 node server/server.js",
     "build": "craco build",
-    "test": "craco test"
+    "test": "craco test",
+    "server": "node server/server.js"
   },
   "eslintConfig": {
     "extends": [
