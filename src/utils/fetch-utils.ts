@@ -1,7 +1,7 @@
 import { Banner, Meny, Page } from "../types/SanityTypes";
 
 interface Innhold {
-  data: [Banner, Meny, Page];
+  data: [Banner, Meny, Meny, Page];
   env: string[];
 }
 

@@ -31,10 +31,11 @@ const ContextProvider: FunctionComponent<Props> = (props) => {
     fetchsanityJSON()
       .then((result) => {
         setEnv(result.env);
+
         setData({
           banner: result.data[0],
           meny: result.data[1],
-          page: result.data[2],
+          page: result.data[3],
         });
       })
       .catch((err) => console.error(err));
