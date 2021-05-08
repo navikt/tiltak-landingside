@@ -8,15 +8,13 @@ import { SommerJobbContext } from "../../ContextProvider";
 import debounce from "lodash.debounce";
 import BEMHelper from "../../utils/bem";
 import "./meny.less";
-import MenyIkon from "../../assets/ikoner/MenyIkon";
-import Lenke from "nav-frontend-lenker";
-import KnappBase from "nav-frontend-knapper";
-import { KnappBaseType } from "../../sanity/serializer";
 import {
   getMenutype,
   setFocusIndex,
   View,
 } from "../../utils/menu-lenker-utils";
+import Desktopmeny from "./Desktopmeny";
+import Mobilmeny from "./Mobilmeny";
 
 const Meny: FunctionComponent = () => {
   const { meny } = useContext(SommerJobbContext);
@@ -47,45 +45,14 @@ const Meny: FunctionComponent = () => {
   window.onscroll = function () {
     debounceSectionFocus();
   };
-
+  console.log("menytype:", menutype);
   return (
     <div className={cls.className}>
-      <div className={cls.element("header-ikon")}>
-        <MenyIkon width="4rem" height="4rem" />
-      </div>
-      <div className={cls.element("lenke-wrapper")}>
-        {meny.Menypunkter &&
-          meny.Menypunkter.map((lenke, index) => {
-            return (
-              <Lenke
-                href={lenke.path.current ?? "/#"}
-                className={cls.element(
-                  "lenke",
-                  sectionFocus === index ? "bold" : ""
-                )}
-                key={index}
-              >
-                {lenke.linkTitle ?? ""}
-              </Lenke>
-            );
-          })}
-      </div>
-      <div className={cls.element("button-container")}>
-        {meny.Knapper &&
-          meny.Knapper.map((innhold, index) => {
-            return (
-              <React.Fragment key={index}>
-                <KnappBase
-                  type={
-                    (innhold.knapp.buttontype[0] as KnappBaseType) || "hoved"
-                  }
-                >
-                  {innhold.knapp.tekst}
-                </KnappBase>
-              </React.Fragment>
-            );
-          })}
-      </div>
+      {menutype === View.DESKTOP ? (
+        <Desktopmeny meny={meny} sectionFocus={sectionFocus} />
+      ) : (
+        <Mobilmeny meny={meny} sectionFocus={sectionFocus} />
+      )}
     </div>
   );
 };

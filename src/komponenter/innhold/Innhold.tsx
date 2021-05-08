@@ -7,6 +7,7 @@ import Seksjon from "../seksjon/Seksjon";
 const Innhold: FunctionComponent = () => {
   const { page } = useContext(SommerJobbContext);
   const cls = BEMHelper("innhold");
+  console.log("page", page);
 
   if (!page) return null;
 
@@ -14,7 +15,6 @@ const Innhold: FunctionComponent = () => {
     switch (innhold._type) {
       case "seksjon":
         return <Seksjon seksjon={innhold as SeksjonType} />;
-
       default:
         return null;
     }

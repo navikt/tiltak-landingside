@@ -5,22 +5,36 @@
     display: flex;
     height: 100%;
     margin-bottom: 10rem;
+    //grid-area: main;
   }
 
   &__wrapper {
     display: grid;
-    grid-template-columns: 0.675fr clamp(20rem, 70rem, 70rem) 1fr;
-    grid-template-areas: "| . | main | . |";
+    grid-template-columns: 0fr 1fr 0fr;
+    //grid-template-areas: " | none | main | none | ";
     justify-content: center;
   }
 
   &__meny-container {
     display: flex;
-    width: 100%;
+
     justify-content: flex-end;
   }
 
   @media (min-width: 768px) {
-    grid-template-columns: 0.675fr clamp(20rem, 70rem, 70rem) 1fr;
+    &__wrapper {
+      grid-template-columns: 1fr minmax(40rem, 67rem) 1fr;
+      //grid-template-areas: "| none | main | none |";
+    }
+
+    &__meny-container {
+      width: 100%;
+    }
+  }
+  @media (min-width: 1024px) {
+    &__wrapper {
+      grid-template-columns: 1fr minmax(60rem, 67rem) 1fr;
+      //grid-template-areas: "| none | main | none |";
+    }
   }
 }
