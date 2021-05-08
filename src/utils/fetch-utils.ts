@@ -1,5 +1,3 @@
-import { Banner, Meny, Page } from "../types/SanityTypes";
-
 interface Innhold {
   data: {}[];
   env: string[];

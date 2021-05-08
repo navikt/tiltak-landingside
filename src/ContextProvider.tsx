@@ -8,7 +8,7 @@ interface Props {
 
 export interface Context {
   page: Page | null;
-  meny: Meny | null;
+  navmenu: Meny | null;
   banner: Banner | null;
 }
 
@@ -17,13 +17,13 @@ export const SommerJobbContext = React.createContext({} as Context);
 const ContextProvider: FunctionComponent<Props> = (props) => {
   const [data, setData] = useState<Context>({
     page: null,
-    meny: null,
+    navmenu: null,
     banner: null,
   });
 
   const sommerJobbData: Context = {
     page: data.page,
-    meny: data.meny,
+    navmenu: data.navmenu,
     banner: data.banner,
   };
 
@@ -32,22 +32,10 @@ const ContextProvider: FunctionComponent<Props> = (props) => {
       .then((result) => {
         setEnv(result.env);
         result.data.forEach((obj: any) => {
-          switch (obj._type) {
-            case "page":
-              return setData((prevState) => ({ ...prevState, ["page"]: obj }));
-            case "banner":
-              return setData((prevState) => ({
-                ...prevState,
-                ["banner"]: obj,
-              }));
-            case "navmenu":
-              return setData((prevState) => ({
-                ...prevState,
-                ["meny"]: obj,
-              }));
-            default:
-              return null;
-          }
+          setData((prevState) => ({
+            ...prevState,
+            [obj._type]: obj,
+          }));
         });
       })
       .catch((err) => console.error(err));

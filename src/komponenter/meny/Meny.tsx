@@ -19,7 +19,7 @@ import {
 } from "../../utils/menu-lenker-utils";
 
 const Meny: FunctionComponent = () => {
-  const { meny } = useContext(SommerJobbContext);
+  const { navmenu } = useContext(SommerJobbContext);
   const [sectionFocus, setSectionFocus] = useState<number>(0);
   const [menutype, setMenutype] = useState<View>(getMenutype());
   const cls = BEMHelper("meny");
@@ -37,10 +37,10 @@ const Meny: FunctionComponent = () => {
     return () => window.removeEventListener("resize", viewInnerWidth);
   });
 
-  if (!meny) return null;
+  if (!navmenu) return null;
 
   const debounceSectionFocus = debounce(
-    () => setFocusIndex(meny.Menypunkter, setSectionFocus),
+    () => setFocusIndex(navmenu.Menypunkter, setSectionFocus),
     10
   );
 
@@ -54,8 +54,8 @@ const Meny: FunctionComponent = () => {
         <MenyIkon width="4rem" height="4rem" />
       </div>
       <div className={cls.element("lenke-wrapper")}>
-        {meny.Menypunkter &&
-          meny.Menypunkter.map((lenke, index) => {
+        {navmenu.Menypunkter &&
+          navmenu.Menypunkter.map((lenke, index) => {
             return (
               <Lenke
                 href={lenke.path.current ?? "/#"}
@@ -71,8 +71,8 @@ const Meny: FunctionComponent = () => {
           })}
       </div>
       <div className={cls.element("button-container")}>
-        {meny.Knapper &&
-          meny.Knapper.map((innhold, index) => {
+        {navmenu.Knapper &&
+          navmenu.Knapper.map((innhold, index) => {
             return (
               <React.Fragment key={index}>
                 <KnappBase
