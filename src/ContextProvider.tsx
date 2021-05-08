@@ -31,11 +31,23 @@ const ContextProvider: FunctionComponent<Props> = (props) => {
     fetchsanityJSON()
       .then((result) => {
         setEnv(result.env);
-
-        setData({
-          banner: result.data[0],
-          meny: result.data[1],
-          page: result.data[3],
+        result.data.forEach((obj: any) => {
+          switch (obj._type) {
+            case "page":
+              return setData((prevState) => ({ ...prevState, ["page"]: obj }));
+            case "banner":
+              return setData((prevState) => ({
+                ...prevState,
+                ["banner"]: obj,
+              }));
+            case "navmenu":
+              return setData((prevState) => ({
+                ...prevState,
+                ["meny"]: obj,
+              }));
+            default:
+              return null;
+          }
         });
       })
       .catch((err) => console.error(err));
