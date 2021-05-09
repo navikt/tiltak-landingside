@@ -1,40 +1,46 @@
+html {
+    scroll-behavior: smooth;
+}
+
 .sommerjobb {
-  background-color: #f1f1f1;
+    background-color: #f1f1f1;
 
-  &__content-container {
-    display: flex;
-    height: 100%;
-    margin-bottom: 10rem;
-    //grid-area: main;
-  }
+    &__content-container {
+        display: flex;
+        height: 100%;
+        margin-bottom: 10rem;
+    }
 
-  &__wrapper {
-    display: grid;
-    grid-template-columns: 0fr 1fr 0fr;
-    //grid-template-areas: " | none | main | none | ";
-    justify-content: center;
-  }
-
-  &__meny-container {
-    display: flex;
-
-    justify-content: flex-end;
-  }
-
-  @media (min-width: 768px) {
     &__wrapper {
-      grid-template-columns: 1fr minmax(40rem, 67rem) 1fr;
-      //grid-template-areas: "| none | main | none |";
+        display: grid;
+        grid-template-columns: 0fr 1fr 0fr;
+        justify-content: center;
     }
 
     &__meny-container {
-      width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        position: relative;
     }
-  }
-  @media (min-width: 1024px) {
-    &__wrapper {
-      grid-template-columns: 1fr minmax(60rem, 67rem) 1fr;
-      //grid-template-areas: "| none | main | none |";
+
+    @media (min-width: 768px) {
+        &__wrapper {
+            grid-template-columns: 0fr minmax(40rem, 55rem) 1fr;
+        }
+
+        &__meny-container {
+            justify-content: flex-start;
+            width: 50%;
+        }
     }
-  }
+    @media (min-width: 1024px) {
+        &__meny-container {
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        &__wrapper {
+            grid-template-columns: 1fr minmax(60rem, 67rem) 1fr;
+        }
+    }
 }
