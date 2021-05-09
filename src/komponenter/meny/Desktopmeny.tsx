@@ -2,10 +2,11 @@ import React, { FunctionComponent } from "react";
 import MenyIkon from "../../assets/ikoner/MenyIkon";
 import Lenke from "nav-frontend-lenker";
 import KnappBase from "nav-frontend-knapper";
-import { KnappBaseType } from "../../sanity/serializer";
+import { KnappBaseType, sanityImageLink } from "../../sanity/serializer";
 import BEMHelper from "../../utils/bem";
 import { Meny } from "../../types/SanityTypes";
-import { FiCheckSquare } from "react-icons/fi";
+import { Normaltekst } from "nav-frontend-typografi";
+import "./desktopmeny.less";
 
 interface Props {
   meny: Meny;
@@ -18,8 +19,6 @@ const Desktopmeny: FunctionComponent<Props> = (props) => {
 
   return (
     <div className={cls.element("desktop-wrapper")}>
-      <FiCheckSquare />
-
       <div className={cls.element("header-ikon")}>
         <MenyIkon width="4rem" height="4rem" />
       </div>
@@ -36,7 +35,15 @@ const Desktopmeny: FunctionComponent<Props> = (props) => {
                   )}
                   key={index}
                 >
-                  {lenke.linkTitle ?? ""}
+                  {lenke?.linkIcon?.asset?._ref && (
+                    <div className={cls.element("lenke-ikon")}>
+                      <img
+                        src={sanityImageLink(lenke.linkIcon.asset._ref)}
+                        alt="bilde ungdommer på sommerjobb"
+                      />
+                    </div>
+                  )}
+                  <Normaltekst>{lenke.linkTitle ?? ""}</Normaltekst>
                 </Lenke>
               );
             })}

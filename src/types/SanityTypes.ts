@@ -31,6 +31,13 @@ export interface Menypunkt {
     current: string;
     _type: string;
   };
+  linkIcon: {
+    asset: {
+      _ref: string;
+      _type: string;
+    };
+  };
+  _type: string;
   _key: string;
 }
 

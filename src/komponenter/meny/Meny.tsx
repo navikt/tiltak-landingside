@@ -17,7 +17,7 @@ import Desktopmeny from "./Desktopmeny";
 import Mobilmeny from "./Mobilmeny";
 
 const Meny: FunctionComponent = () => {
-  const { meny } = useContext(SommerJobbContext);
+  const { navmenu } = useContext(SommerJobbContext);
   const [sectionFocus, setSectionFocus] = useState<number>(0);
   const [menutype, setMenutype] = useState<View>(getMenutype());
   const cls = BEMHelper("meny");
@@ -35,10 +35,10 @@ const Meny: FunctionComponent = () => {
     return () => window.removeEventListener("resize", viewInnerWidth);
   });
 
-  if (!meny) return null;
+  if (!navmenu) return null;
 
   const debounceSectionFocus = debounce(
-    () => setFocusIndex(meny.Menypunkter, setSectionFocus),
+    () => setFocusIndex(navmenu.Menypunkter, setSectionFocus),
     10
   );
 
@@ -49,9 +49,9 @@ const Meny: FunctionComponent = () => {
   return (
     <div className={cls.className}>
       {menutype === View.DESKTOP ? (
-        <Desktopmeny meny={meny} sectionFocus={sectionFocus} />
+        <Desktopmeny meny={navmenu} sectionFocus={sectionFocus} />
       ) : (
-        <Mobilmeny meny={meny} sectionFocus={sectionFocus} />
+        <Mobilmeny meny={navmenu} sectionFocus={sectionFocus} />
       )}
     </div>
   );

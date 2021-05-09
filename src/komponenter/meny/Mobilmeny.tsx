@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import { Meny } from "../../types/SanityTypes";
 import BEMHelper from "../../utils/bem";
 import "./mobilmeny.less";
-import KnappBase from "nav-frontend-knapper";
+// import KnappBase from "nav-frontend-knapper";
 
 interface Props {
   meny: Meny;
@@ -10,7 +10,7 @@ interface Props {
 }
 
 const Mobilmeny: FunctionComponent<Props> = (props) => {
-  const { meny, sectionFocus } = props;
+  // const { meny, sectionFocus } = props;
   const cls = BEMHelper("mobilmeny");
 
   return (
