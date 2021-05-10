@@ -1,112 +1,112 @@
-import { TypoStyle } from "../sanity/serializer";
-import { Color } from "./colors";
-import { Knapp } from "./Component";
+import { TypoStyle } from '../sanity/serializer';
+import { Color } from './colors';
+import { Knapp } from './Component';
 
 interface CommonBlock {
-  title: string;
-  _createdAt: string;
-  _id: string;
-  _rev: string;
-  _type: string;
-  _updatedAt: string;
+    title: string;
+    _createdAt: string;
+    _id: string;
+    _rev: string;
+    _type: string;
+    _updatedAt: string;
 }
 
 interface Asset {
-  _ref: string;
-  _type: string;
+    _ref: string;
+    _type: string;
 }
 
 export interface Banner extends CommonBlock {
-  backgroundColor: Color;
-  bannerImage: {
-    asset: Asset;
-    _type: string;
-  };
-  borderlineColor: Color;
+    backgroundColor: Color;
+    bannerImage: {
+        asset: Asset;
+        _type: string;
+    };
+    borderlineColor: Color;
 }
 
 export interface Menypunkt {
-  linkTitle: string;
-  path: {
-    current: string;
-    _type: string;
-  };
-  linkIcon: {
-    asset: {
-      _ref: string;
-      _type: string;
+    linkTitle: string;
+    path: {
+        current: string;
+        _type: string;
     };
-  };
-  _type: string;
-  _key: string;
+    linkIcon: {
+        asset: {
+            _ref: string;
+            _type: string;
+        };
+    };
+    _type: string;
+    _key: string;
 }
 
 interface EnkeltMenyKnapp {
-  knapp: Knapp;
-  _key: string;
-  _type: string;
+    knapp: Knapp;
+    _key: string;
+    _type: string;
 }
 
 export interface Meny extends CommonBlock {
-  Knapper: EnkeltMenyKnapp[];
-  Menypunkter: Menypunkt[];
+    Knapper: EnkeltMenyKnapp[];
+    Menypunkter: Menypunkt[];
 }
 
 export interface Page extends CommonBlock {
-  content: {}[];
-  menu: {
-    _ref: string;
-    _type: string;
-  };
+    content: {}[];
+    menu: {
+        _ref: string;
+        _type: string;
+    };
 }
 
 export interface Gridlayout {
-  layoutType: LayoutType[];
-  _key: string;
-  _type: string;
+    layoutType: LayoutType[];
+    _key: string;
+    _type: string;
 }
 
 interface LayoutType {
-  fieldOne: SeksjonType[];
-  fieldTwo: SeksjonType[];
-  fieldThree: SeksjonType[];
-  fieldFour: SeksjonType[];
-  fieldFive: SeksjonType[];
-  fieldSix: SeksjonType[];
-  _key: string;
-  _type: string;
+    fieldOne: SeksjonType[];
+    fieldTwo: SeksjonType[];
+    fieldThree: SeksjonType[];
+    fieldFour: SeksjonType[];
+    fieldFive: SeksjonType[];
+    fieldSix: SeksjonType[];
+    _key: string;
+    _type: string;
 }
 
 export interface SeksjonType {
-  content: SeksjonContent[];
-  heading: string;
-  id: string;
-  image: {
-    _type: string;
-    asset: {
-      _ref: string;
-      _type: string;
+    content: SeksjonContent[];
+    heading: string;
+    id: string;
+    image: {
+        _type: string;
+        asset: {
+            _ref: string;
+            _type: string;
+        };
     };
-  };
-  _key: string;
-  _type: string;
+    _key: string;
+    _type: string;
 }
 
 export interface SeksjonContent {
-  content: Block[];
-  _key: string;
-  _type: string;
+    content: Block[];
+    _key: string;
+    _type: string;
 }
 
 export interface Block {
-  children: {
+    children: {
+        _key: string;
+        _type: string;
+        marks: [];
+        text: string;
+    };
+    markDefs: [];
+    style: TypoStyle;
     _key: string;
     _type: string;
-    marks: [];
-    text: string;
-  };
-  markDefs: [];
-  style: TypoStyle;
-  _key: string;
-  _type: string;
 }
