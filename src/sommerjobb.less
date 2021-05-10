@@ -1,3 +1,4 @@
+/* NB! ingen smooth behavior css/js som støttes av IE & safari browser */
 html {
     scroll-behavior: smooth;
 }
@@ -23,7 +24,7 @@ html {
         position: relative;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 576px) {
         &__wrapper {
             grid-template-columns: 0fr minmax(40rem, 55rem) 1fr;
         }
