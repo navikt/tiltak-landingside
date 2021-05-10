@@ -1,7 +1,7 @@
 const template = require('./template');
 const helmet = require('helmet');
 
-export const addHeadersForCertainRequests = (server) =>
+const addHeadersForCertainRequests = (server) =>
     server.use((req, res, next) => {
         if (template.corsWhitelist.includes(req.headers.origin)) {
             res.header('Access-Control-Allow-Origin', req.headers.origin);
