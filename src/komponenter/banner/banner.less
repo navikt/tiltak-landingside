@@ -1,42 +1,81 @@
 .banner {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  background-color: #d0e0f1;
-  margin-bottom: 7rem;
-
-  .typo-sidetittel {
-    font-size: 1.25rem;
-  }
-
-  &--center {
-    .banner__tekst {
-      justify-content: center;
-    }
-  }
-
-  &__tekst {
-    min-height: 8rem;
-    width: 63rem;
-    max-width: 90%;
+    width: 100%;
     display: flex;
-    align-items: center;
-  }
+    justify-content: center;
+    background-color: #d0e0f1;
+    margin-bottom: 7rem;
 
-  &__bunnlinje {
-    background-color: #a2c1e4;
-    min-height: 0.5rem;
-  }
-
-  @media (min-width: 768px) {
     .typo-sidetittel {
-      font-size: 1.5rem;
+        font-size: 1.25rem;
     }
-  }
 
-  @media (min-width: 1024px) {
-    .typo-sidetittel {
-      font-size: 2.5rem;
+    &--center {
+        .banner__tekst {
+            justify-content: center;
+        }
     }
-  }
+
+    &__tekst {
+        min-height: 8rem;
+        width: 63rem;
+        max-width: 90%;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+
+        & > p,
+        & > h1,
+        & > h2,
+        & > h3,
+        & > h4 {
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        & > img {
+            width: 10.5rem;
+            height: 2.5rem;
+        }
+    }
+
+    &__bunnlinje {
+        background-color: #a2c1e4;
+        min-height: 0.5rem;
+    }
+
+    @media (min-width: 576px) {
+        &__tekst {
+            & > img {
+                width: 18.625rem;
+                height: 5rem;
+            }
+        }
+    }
+
+    @media (min-width: 768px) {
+        &__tekst {
+            & > img {
+                width: 24.375rem;
+                height: 6.5rem;
+            }
+        }
+
+        .typo-sidetittel {
+            font-size: 1.5rem;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        &__tekst {
+            & > img {
+                width: 30.125rem;
+                height: 7.8125rem;
+            }
+        }
+
+        .typo-sidetittel {
+            font-size: 2.5rem;
+        }
+    }
 }

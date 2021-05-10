@@ -14,6 +14,7 @@ export const initMenutype = (): View => {
         case window.innerWidth > 520 && window.innerWidth < 1024:
             return View.TABLET;
         case window.innerWidth <= 520:
+            return View.MOBILE;
         default:
             return View.DESKTOP;
     }
