@@ -1,0 +1,94 @@
+.menyknapp {
+    background-color: white;
+    border: none;
+    position: relative;
+
+    &__lukk-tekst {
+        width: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        color: #0067c5;
+        font-weight: 400;
+    }
+
+    &__chevron-wrapper {
+        margin-top: 1px;
+    }
+
+    &__chevron {
+        width: 15px;
+        height: 3px;
+
+        &:before,
+        &:after {
+            content: '';
+            display: inline-block;
+            height: 3px;
+            width: 14px;
+            background-color: black;
+            border-radius: 10px;
+            position: relative;
+            transition: 300ms ease-in-out transform;
+        }
+
+        &:before {
+            top: -4px;
+            right: -7px;
+            transform: rotate(45deg);
+        }
+
+        &:after {
+            bottom: -4px;
+            left: -7px;
+            transform: rotate(-45deg);
+        }
+    }
+
+    &__container {
+        display: flex;
+        border-radius: 6px;
+        background-color: #f8f3f359;
+        padding: 0.125rem 0 0.275rem 0;
+        border: 1px solid #dadada;
+    }
+
+    &__container--open {
+        background-color: #f8f3f326;
+        margin-right: 0.25rem;
+        padding: 0.125rem 0.125rem 0.25rem 0.25rem;
+        border-radius: 4px;
+        border: none;
+
+        &:hover {
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: 1px solid #0067c5;
+
+            .menyknapp {
+                &__chevron {
+                    &:before,
+                    &:after {
+                        background-color: #0067c5;
+                    }
+                }
+            }
+        }
+
+        .menyknapp {
+            &__chevron {
+                &:before {
+                    transform: translateY(4px) rotate(45deg);
+                }
+                &:after {
+                    transform: translateY(-4px) rotate(-45deg);
+                }
+            }
+
+            &__lukk-tekst {
+                width: 2.125rem;
+                font-weight: 600;
+            }
+        }
+    }
+}

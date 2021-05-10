@@ -1,93 +1,49 @@
-import React, {
-  FunctionComponent,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
-import { SommerJobbContext } from "../../ContextProvider";
-import debounce from "lodash.debounce";
-import BEMHelper from "../../utils/bem";
-import "./meny.less";
-import MenyIkon from "../../assets/ikoner/MenyIkon";
-import Lenke from "nav-frontend-lenker";
-import KnappBase from "nav-frontend-knapper";
-import { KnappBaseType } from "../../sanity/serializer";
-import {
-  getMenutype,
-  setFocusIndex,
-  View,
-} from "../../utils/menu-lenker-utils";
+import React, { FunctionComponent, useContext, useEffect, useState } from 'react';
+import { SommerJobbContext } from '../../ContextProvider';
+import { initMenutype, View } from '../../utils/menu-lenker-utils';
+import Desktopmeny from './desktopmeny/Desktopmeny';
+import Tabletmeny from './tabletmeny/Tabletmeny';
+import Mobilmeny from './mobilmeny/Mobilmeny';
+import BEMHelper from '../../utils/bem';
 
 const Meny: FunctionComponent = () => {
-  const { navmenu } = useContext(SommerJobbContext);
-  const [sectionFocus, setSectionFocus] = useState<number>(0);
-  const [menutype, setMenutype] = useState<View>(getMenutype());
-  const cls = BEMHelper("meny");
+    const { navmenu } = useContext(SommerJobbContext);
+    const [menutype, setMenutype] = useState<View>(initMenutype());
+    const cls = BEMHelper('meny');
 
-  useEffect(() => {
-    const viewInnerWidth = () => {
-      if (menutype !== View.DESKTOP && window.innerWidth > 768) {
-        setMenutype(View.DESKTOP);
-      } else if (menutype !== View.MOBILE && window.innerWidth <= 768) {
-        setMenutype(View.MOBILE);
-      }
+    useEffect(() => {
+        const viewInnerWidth = () => {
+            if (menutype !== View.DESKTOP && window.innerWidth > 1024) {
+                setMenutype(View.DESKTOP);
+            } else if (
+                menutype !== View.TABLET &&
+                window.innerWidth > 576 &&
+                window.innerWidth < 1024
+            ) {
+                setMenutype(View.TABLET);
+            } else if (menutype !== View.MOBILE && window.innerWidth <= 576) {
+                setMenutype(View.MOBILE);
+            }
+        };
+
+        window.addEventListener('resize', viewInnerWidth);
+        return () => window.removeEventListener('resize', viewInnerWidth);
+    });
+
+    if (!navmenu) return null;
+
+    const getMenu = (type: View): React.ReactNode => {
+        switch (type) {
+            case View.DESKTOP:
+                return <Desktopmeny meny={navmenu} />;
+            case View.TABLET:
+                return <Tabletmeny meny={navmenu} />;
+            case View.MOBILE:
+                return <Mobilmeny meny={navmenu} />;
+        }
     };
 
-    window.addEventListener("resize", viewInnerWidth);
-    return () => window.removeEventListener("resize", viewInnerWidth);
-  });
-
-  if (!navmenu) return null;
-
-  const debounceSectionFocus = debounce(
-    () => setFocusIndex(navmenu.Menypunkter, setSectionFocus),
-    10
-  );
-
-  window.onscroll = function () {
-    debounceSectionFocus();
-  };
-
-  return (
-    <div className={cls.className}>
-      <div className={cls.element("header-ikon")}>
-        <MenyIkon width="4rem" height="4rem" />
-      </div>
-      <div className={cls.element("lenke-wrapper")}>
-        {navmenu.Menypunkter &&
-          navmenu.Menypunkter.map((lenke, index) => {
-            return (
-              <Lenke
-                href={lenke.path.current ?? "/#"}
-                className={cls.element(
-                  "lenke",
-                  sectionFocus === index ? "bold" : ""
-                )}
-                key={index}
-              >
-                {lenke.linkTitle ?? ""}
-              </Lenke>
-            );
-          })}
-      </div>
-      <div className={cls.element("button-container")}>
-        {navmenu.Knapper &&
-          navmenu.Knapper.map((innhold, index) => {
-            return (
-              <React.Fragment key={index}>
-                <KnappBase
-                  type={
-                    (innhold.knapp.buttontype[0] as KnappBaseType) || "hoved"
-                  }
-                >
-                  {innhold.knapp.tekst}
-                </KnappBase>
-              </React.Fragment>
-            );
-          })}
-      </div>
-    </div>
-  );
+    return <div className={cls.className}>{getMenu(menutype)}</div>;
 };
 
 export default Meny;

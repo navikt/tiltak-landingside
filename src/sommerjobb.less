@@ -1,26 +1,47 @@
+/* NB! ingen smooth behavior css/js som støttes av IE & safari browser */
+html {
+    scroll-behavior: smooth;
+}
+
 .sommerjobb {
-  background-color: #f1f1f1;
+    background-color: #f1f1f1;
 
-  &__content-container {
-    display: flex;
-    height: 100%;
-    margin-bottom: 10rem;
-  }
+    &__content-container {
+        display: flex;
+        height: 100%;
+        margin-bottom: 10rem;
+    }
 
-  &__wrapper {
-    display: grid;
-    grid-template-columns: 0.675fr clamp(20rem, 70rem, 70rem) 1fr;
-    grid-template-areas: "| . | main | . |";
-    justify-content: center;
-  }
+    &__wrapper {
+        display: grid;
+        grid-template-columns: 0fr 1fr 0fr;
+        justify-content: center;
+    }
 
-  &__meny-container {
-    display: flex;
-    width: 100%;
-    justify-content: flex-end;
-  }
+    &__meny-container {
+        display: flex;
+        justify-content: flex-end;
+        position: relative;
+    }
 
-  @media (min-width: 768px) {
-    grid-template-columns: 0.675fr clamp(20rem, 70rem, 70rem) 1fr;
-  }
+    @media (min-width: 576px) {
+        &__wrapper {
+            grid-template-columns: 0fr minmax(40rem, 55rem) 1fr;
+        }
+
+        &__meny-container {
+            justify-content: flex-start;
+            width: 50%;
+        }
+    }
+    @media (min-width: 1024px) {
+        &__meny-container {
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        &__wrapper {
+            grid-template-columns: 1fr minmax(60rem, 67rem) 1fr;
+        }
+    }
 }
