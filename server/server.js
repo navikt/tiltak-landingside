@@ -17,8 +17,8 @@ const sendDataObj = (json) => ({
 });
 
 const startServer = () => {
-    header.setContentPolicy();
-    header.addHeadersForCertainRequests();
+    header.setContentPolicy(server);
+    header.addHeadersForCertainRequests(server);
 
     server.get(`${BASE_PATH}/innhold/`, (req, res) => {
         const cacheInnhold = sanity.mainCacheInnhold.get(sanity.mainCacheInnholdKey);
