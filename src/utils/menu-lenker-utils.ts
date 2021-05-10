@@ -9,7 +9,7 @@ export enum View {
 
 export const initMenutype = (): View => {
     switch (true) {
-        case window.innerWidth > 1024:
+        case window.innerWidth >= 1024:
             return View.DESKTOP;
         case window.innerWidth > 520 && window.innerWidth < 1024:
             return View.TABLET;

@@ -13,7 +13,7 @@ const Meny: FunctionComponent = () => {
 
     useEffect(() => {
         const viewInnerWidth = () => {
-            if (menutype !== View.DESKTOP && window.innerWidth > 1024) {
+            if (menutype !== View.DESKTOP && window.innerWidth >= 1024) {
                 setMenutype(View.DESKTOP);
             } else if (
                 menutype !== View.TABLET &&
