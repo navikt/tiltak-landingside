@@ -27,6 +27,10 @@
                     }
                 }
 
+                &__header-burger-button {
+                    justify-content: flex-end;
+                }
+
                 &__header-ikon {
                     transition: 0.3s;
                     transform: scale(0.75);
@@ -42,14 +46,14 @@
     }
 
     &__innhold-container {
-        padding: 0 0.5rem 2rem 1rem;
+        padding: 0 0.5rem 2rem 0.35rem;
     }
 
     &__header-burger-button {
         height: 2.125rem;
         display: flex;
         width: 100%;
-        justify-content: flex-end;
+        justify-content: center;
         z-index: 101;
     }
 
@@ -75,7 +79,11 @@
     }
 
     &__lenke-ikon {
-        margin-right: 0.75rem;
+        margin-right: 0.5rem;
+        display: flex;
+        border: 1px solid white;
+        border-radius: 4px;
+        padding: 0.25rem;
 
         & > img {
             width: 24px;
@@ -87,21 +95,17 @@
         max-width: 13.5rem;
         overflow: hidden;
         text-overflow: ellipsis;
-        margin: 0.5rem 0;
+        margin: 0.25rem 0;
         display: flex;
         align-items: center;
         position: relative;
 
         &:hover {
-            //box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
-            //   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
-            //rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-            //   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
-            box-shadow: blue 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px -10px 0px -3px,
-                rgb(31, 193, 27) 10px -10px, rgb(255, 255, 255) 20px -20px 0px -3px,
-                rgb(255, 217, 19) 20px -20px, rgb(255, 255, 255) 30px -30px 0px -3px,
-                rgb(255, 156, 85) 30px -30px, rgb(255, 255, 255) 40px -40px 0px -3px,
-                rgb(255, 85, 85) 40px -40px;
+            .tabletmeny {
+                &__lenke-ikon {
+                    border: 1px solid;
+                }
+            }
         }
 
         &--bold,
@@ -165,58 +169,5 @@
 
     &__button-container {
         display: none;
-    }
-
-    @media (min-width: 1024px) {
-        &__desktop-wrapper {
-            background-color: white;
-            max-width: 15rem;
-            position: sticky;
-            top: 15rem;
-            margin-bottom: 0.75rem;
-            border-radius: 4px;
-            height: fit-content;
-            width: fit-content;
-        }
-
-        &__innhold-container {
-            padding: 3rem 0.5rem 2rem 1rem;
-        }
-
-        &__header-ikon {
-            position: relative;
-            width: 100%;
-
-            & > svg {
-                position: absolute;
-                left: 50%;
-                margin-left: -2rem;
-                top: -1.25rem;
-            }
-        }
-
-        &__lenke-wrapper {
-            padding-bottom: 1.5rem;
-            display: flex;
-            flex-direction: column;
-        }
-
-        &__lenke-ikon {
-            margin-right: 0.75rem;
-            width: 1.5rem;
-            height: 1.5rem;
-        }
-
-        &__lenke {
-            padding: 0.5rem 0;
-            display: flex;
-            align-items: flex-start;
-            &--bold,
-            &--bold > p {
-                font-weight: 600 !important;
-                color: black !important;
-                text-decoration: none !important;
-            }
-        }
     }
 }
