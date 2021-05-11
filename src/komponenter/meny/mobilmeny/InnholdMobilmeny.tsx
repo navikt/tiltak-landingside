@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import Lenke from 'nav-frontend-lenker';
-import { KnappBaseType, sanityImageLink } from '../../../sanity/serializer';
+import { sanityImageLink } from '../../../sanity/serializer';
 import { Normaltekst } from 'nav-frontend-typografi';
 import LenkeTekst from '../komponenter/LenkeTekst';
 import { Meny } from '../../../types/SanityTypes';
