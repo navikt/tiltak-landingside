@@ -1,5 +1,7 @@
 import React from 'react';
 
+// height: '3.75rem'
+
 const LenkeTekst = (txt: string) => {
     if (txt.length >= 27) {
         const ordlist = txt.split(' ');
@@ -16,8 +18,8 @@ const LenkeTekst = (txt: string) => {
                 )
             )
         );
-        return <span style={{ height: '3.75rem' }}>{leke ?? ''}</span>;
+        return <span aria-label={txt}>{leke ?? ''}</span>;
     }
-    return <span style={{ height: '2.5rem' }}>{txt}</span>;
+    return <span aria-label={txt}>{txt}</span>;
 };
 export default LenkeTekst;

@@ -29,6 +29,10 @@
 
             .tabletmeny {
                 &__lenke {
+                    &--bold,
+                    &--bold > p {
+                        font-weight: 500 !important;
+                    }
                     & > p > span,
                     &--bold > p > span {
                         transition: 0.3s;
@@ -121,7 +125,7 @@
 
         &--bold,
         &--bold > p {
-            font-weight: 600 !important;
+            font-weight: 400 !important;
             color: black !important;
             text-decoration: none !important;
         }
