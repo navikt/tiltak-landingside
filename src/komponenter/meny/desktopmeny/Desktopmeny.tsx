@@ -5,7 +5,7 @@ import { Meny } from '../../../types/SanityTypes';
 import './desktopmeny.less';
 import debounce from 'lodash.debounce';
 import { setFocusIndex } from '../../../utils/menu-lenker-utils';
-import Innholdmeny from '../komponenter/Innholdmeny';
+import Innholdmeny from './Innholdmeny';
 
 interface Props {
     meny: Meny;

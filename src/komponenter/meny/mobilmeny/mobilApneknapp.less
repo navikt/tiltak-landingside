@@ -1,0 +1,44 @@
+.mobilApneknapp {
+    margin-top: 3px;
+    width: 1rem;
+    height: 1rem;
+
+    &__chevron {
+        width: 15px;
+        height: 3px;
+
+        &:before,
+        &:after {
+            content: '';
+            display: inline-block;
+            position: relative;
+            height: 14px;
+            width: 3px;
+            background-color: black;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        &:before {
+            top: 50%;
+            right: -5px;
+            transform: rotate(-37.5deg);
+        }
+
+        &:after {
+            top: 50%;
+            left: -5px;
+            transform: rotate(37.5deg);
+        }
+
+        &--open {
+            &:before {
+                transform: translateX(-3.3px) rotate(-37.5deg);
+            }
+
+            &:after {
+                transform: translateX(3.3px) rotate(37.5deg);
+            }
+        }
+    }
+}

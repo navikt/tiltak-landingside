@@ -6,7 +6,7 @@ import './tabletmeny.less';
 import debounce from 'lodash.debounce';
 import { setFocusIndex } from '../../../utils/menu-lenker-utils';
 import Menyknapp from '../komponenter/Menyknapp';
-import InnholdTabletmeny from '../komponenter/InnholdTabletmeny';
+import InnholdTabletmeny from './InnholdTabletmeny';
 
 interface Props {
     meny: Meny;

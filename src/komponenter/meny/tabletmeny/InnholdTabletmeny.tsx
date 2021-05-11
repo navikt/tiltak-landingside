@@ -2,7 +2,7 @@ import React, { FunctionComponent, useState } from 'react';
 import Lenke from 'nav-frontend-lenker';
 import { KnappBaseType, sanityImageLink } from '../../../sanity/serializer';
 import { Normaltekst } from 'nav-frontend-typografi';
-import LenkeTekst from './LenkeTekst';
+import LenkeTekst from '../komponenter/LenkeTekst';
 import KnappBase from 'nav-frontend-knapper';
 import { Meny } from '../../../types/SanityTypes';
 import BEMHelper from '../../../utils/bem';
