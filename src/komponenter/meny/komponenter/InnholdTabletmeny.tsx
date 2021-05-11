@@ -38,7 +38,12 @@ const InnholdTabletmeny: FunctionComponent<Props> = (props) => {
                                     onMouseLeave={() => removeLabel()}
                                 >
                                     {lenke?.linkIcon?.asset?._ref && (
-                                        <div className={cls.element('lenke-ikon')}>
+                                        <div
+                                            className={cls.element(
+                                                'lenke-ikon',
+                                                sectionFocus === index ? 'active' : ''
+                                            )}
+                                        >
                                             <img
                                                 src={sanityImageLink(lenke.linkIcon.asset._ref)}
                                                 alt="bilde ungdommer på sommerjobb"

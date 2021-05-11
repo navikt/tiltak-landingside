@@ -30,12 +30,7 @@ const Tabletmeny: FunctionComponent<Props> = (props) => {
     return (
         <div className={cls.element('tablet-container')}>
             <div className={cls.element('tablet-anchor')}>
-                <div
-                    className={cls.element('tablet-wrapper', open ? 'open' : '')}
-                    /*  style={{
-                marginTop: `${position.toString()}px`,
-            }}*/
-                >
+                <div className={cls.element('tablet-wrapper', open ? 'open' : '')}>
                     <div className={cls.element('header-ikon')}>
                         <MenyIkon width="4rem" height="4rem" />
                     </div>
