@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { Meny } from '../../../types/SanityTypes';
 import BEMHelper from '../../../utils/bem';
-
 import './mobilmeny.less';
 // import KnappBase from "nav-frontend-knapper";
 

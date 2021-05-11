@@ -1,7 +1,5 @@
 import React from 'react';
 
-// height: '3.75rem'
-
 const LenkeTekst = (txt: string) => {
     if (txt.length >= 27) {
         const ordlist = txt.split(' ');
