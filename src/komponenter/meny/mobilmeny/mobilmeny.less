@@ -21,8 +21,6 @@
 
     &__container {
         width: 100%;
-        border-top-left-radius: 12px;
-        border-top-right-radius: 12px;
         justify-content: center;
         background-color: white;
         min-height: 3rem;
@@ -35,13 +33,17 @@
         align-items: center;
     }
 
+    &__container,
+    &__header {
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+    }
+
     &__header {
         background-color: white;
         height: 100%;
         width: 100%;
-        box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
-        border-top-left-radius: 12px;
-        border-top-right-radius: 12px;
+        box-shadow: rgba(17, 17, 26, 0.05) 0 1px 0, rgba(17, 17, 26, 0.1) 0 0 8px;
         padding: 0.5rem 1.75rem 0.5rem 1rem;
         align-items: center;
         display: flex;

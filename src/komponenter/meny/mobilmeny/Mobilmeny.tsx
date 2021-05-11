@@ -6,15 +6,27 @@ import MenyIkon from '../../../assets/ikoner/MenyIkon';
 import MobilApneknapp from './MobilApneknapp';
 import { Normaltekst } from 'nav-frontend-typografi';
 import InnholdMobilmeny from './InnholdMobilmeny';
+import debounce from 'lodash.debounce';
+import { setFocusIndex } from '../../../utils/menu-lenker-utils';
 
 interface Props {
     meny: Meny;
 }
 
 const Mobilmeny: FunctionComponent<Props> = (props) => {
+    const cls = BEMHelper('mobilmeny');
     const { meny } = props;
     const [open, setOpen] = useState<boolean>(false);
-    const cls = BEMHelper('mobilmeny');
+    const [sectionFocus, setSectionFocus] = useState<number>(0);
+
+    const debounceSectionFocus = debounce(
+        () => setFocusIndex(meny.Menypunkter, setSectionFocus, 200),
+        10
+    );
+
+    window.onscroll = function () {
+        debounceSectionFocus();
+    };
 
     return (
         <div className={cls.className}>
@@ -32,7 +44,11 @@ const Mobilmeny: FunctionComponent<Props> = (props) => {
                     </div>
                 </button>
                 <div className={cls.element('body')}>
-                    <InnholdMobilmeny meny={meny} sectionFocus={0} className={cls.className} />
+                    <InnholdMobilmeny
+                        meny={meny}
+                        sectionFocus={sectionFocus}
+                        className={cls.className}
+                    />
                 </div>
             </div>
         </div>
