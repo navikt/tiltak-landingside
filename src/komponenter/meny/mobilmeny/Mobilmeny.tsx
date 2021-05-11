@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import { Meny } from '../../../types/SanityTypes';
 import BEMHelper from '../../../utils/bem';
 import './mobilmeny.less';
@@ -13,6 +13,8 @@ interface Props {
     meny: Meny;
 }
 
+const MOBILE_CONTAINER = 'mobil-container';
+
 const Mobilmeny: FunctionComponent<Props> = (props) => {
     const cls = BEMHelper('mobilmeny');
     const { meny } = props;
@@ -24,13 +26,24 @@ const Mobilmeny: FunctionComponent<Props> = (props) => {
         10
     );
 
+    useEffect(() => {
+        const closeOnCLickOutside = (event: any) => {
+            if (open && !document.getElementById(MOBILE_CONTAINER)?.contains(event?.target)) {
+                setOpen((prevState) => !prevState);
+            }
+        };
+
+        window.addEventListener('click', closeOnCLickOutside);
+        return () => window.removeEventListener('click', closeOnCLickOutside);
+    }, [open]);
+
     window.onscroll = function () {
         debounceSectionFocus();
     };
 
     return (
         <div className={cls.className}>
-            <div className={cls.element('container', open ? 'open' : '')}>
+            <div className={cls.element('container', open ? 'open' : '')} id={MOBILE_CONTAINER}>
                 <button
                     className={cls.element('header')}
                     onClick={() => setOpen((prevState) => !prevState)}
