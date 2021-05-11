@@ -34,8 +34,12 @@ const InnholdTabletmeny: FunctionComponent<Props> = (props) => {
                                         'lenke',
                                         sectionFocus === index ? 'bold' : ''
                                     )}
-                                    onMouseOver={() => displayLabel(index)}
-                                    onMouseLeave={() => removeLabel()}
+                                    onTouchStart={() => displayLabel(index)}
+                                    onTouchMove={() => removeLabel()}
+                                    onTouchEnd={() => removeLabel()}
+                                    //onMouseEnter={() => displayLabel(index)}
+                                    //onMouseLeave={() => removeLabel()}
+                                    //onMouseOut={() => removeLabel()}
                                 >
                                     {lenke?.linkIcon?.asset?._ref && (
                                         <div
