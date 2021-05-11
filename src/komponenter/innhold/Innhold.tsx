@@ -20,7 +20,7 @@ const Innhold: FunctionComponent = () => {
     };
 
     return (
-        <div className={cls.className}>
+        <div className={cls.className} style={{ marginLeft: '0.5rem' }}>
             {page?.content?.map((innhold: any, index: number) => {
                 return <React.Fragment key={index}>{getComponent(innhold)}</React.Fragment>;
             })}
