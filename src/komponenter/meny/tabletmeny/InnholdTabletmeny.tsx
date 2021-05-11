@@ -19,7 +19,11 @@ const InnholdTabletmeny: FunctionComponent<Props> = (props) => {
     const cls = BEMHelper(className);
 
     const displayLabel = (index: number) => setDisplayLabelIndex(index);
-    const removeLabel = () => setDisplayLabelIndex(null);
+    const removeLabel = () => {
+        setTimeout(() => {
+            setDisplayLabelIndex(null);
+        }, 850);
+    };
 
     return (
         <div className={cls.element('innhold-container')}>
@@ -37,9 +41,6 @@ const InnholdTabletmeny: FunctionComponent<Props> = (props) => {
                                     onTouchStart={() => displayLabel(index)}
                                     onTouchMove={() => removeLabel()}
                                     onTouchEnd={() => removeLabel()}
-                                    //onMouseEnter={() => displayLabel(index)}
-                                    //onMouseLeave={() => removeLabel()}
-                                    //onMouseOut={() => removeLabel()}
                                 >
                                     {lenke?.linkIcon?.asset?._ref && (
                                         <div
