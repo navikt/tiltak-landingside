@@ -5,6 +5,7 @@ import Desktopmeny from './desktopmeny/Desktopmeny';
 import Tabletmeny from './tabletmeny/Tabletmeny';
 import Mobilmeny from './mobilmeny/Mobilmeny';
 import BEMHelper from '../../utils/bem';
+import './meny.less';
 
 const Meny: FunctionComponent = () => {
     const { navmenu } = useContext(SommerJobbContext);
