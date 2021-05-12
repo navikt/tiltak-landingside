@@ -49,6 +49,8 @@ const InnholdTabletmeny: FunctionComponent<Props & RouteComponentProps> = (props
                                         }
                                         registrerMenyvalg(lenke._key);
                                     }}
+                                    onMouseOver={() => displayLabel(index)}
+                                    onMouseLeave={() => removeLabel()}
                                 >
                                     {lenke?.linkIcon?.asset?._ref && (
                                         <div
