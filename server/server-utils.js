@@ -22,11 +22,23 @@ const setContentPolicy = (server) => {
         helmet({
             contentSecurityPolicy: {
                 directives: {
-                    connectSrc: ["'self'", 'https://*.nav.no', 'https://*.psplugin.com'],
+                    connectSrc: [
+                        "'self'",
+                        'https://*.nav.no',
+                        'https://*.psplugin.com',
+                        'https://www.google-analytics.com',
+                    ],
                     defaultSrc: ["'none'"],
                     fontSrc: ["'self'", 'data:', 'https://*.psplugin.com', 'http://*.psplugin.com'],
                     frameSrc: ['https://player.vimeo.com'],
-                    imgSrc: ["'self'", 'data:', 'https://*.nav.no'],
+                    imgSrc: [
+                        "'self'",
+                        'data:',
+                        'https://*.nav.no',
+                        'https://www.googletagmanager.com',
+                        'https://www.google-analytics.com',
+                        'https://account.psplugin.com',
+                    ],
                     manifestSrc: ["'self'"],
                     scriptSrc: [
                         "'self'",
@@ -35,7 +47,7 @@ const setContentPolicy = (server) => {
                         "'unsafe-inline'",
                         "'unsafe-eval'",
                     ],
-                    styleSrc: ["'self'", 'https://*.nav.no', "'unsafe-inline'"],
+                    styleSrc: ["'self'", 'https://*.nav.no'],
                 },
                 reportOnly: true,
             },
