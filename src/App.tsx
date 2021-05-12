@@ -3,7 +3,6 @@ import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import SommerJobb from './SommerJobb';
 import ContextProvider from './ContextProvider';
-import UrlAppend from './UrlAppend';
 import { registrerBesokside } from './utils/amplitude-utils';
 
 // main
@@ -17,9 +16,7 @@ function App() {
                 <div>
                     <Switch>
                         <Route path="/tiltak/sommerjobb/" exact={true}>
-                            <UrlAppend>
-                                <SommerJobb />
-                            </UrlAppend>
+                            <SommerJobb />
                         </Route>
                     </Switch>
                 </div>

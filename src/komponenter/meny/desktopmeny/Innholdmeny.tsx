@@ -7,6 +7,7 @@ import KnappBase from 'nav-frontend-knapper';
 import { Meny } from '../../../types/SanityTypes';
 import BEMHelper from '../../../utils/bem';
 import { registrerMenyvalg } from '../../../utils/amplitude-utils';
+import { RouteComponentProps, withRouter } from 'react-router';
 
 interface Props {
     meny: Meny;
@@ -14,7 +15,7 @@ interface Props {
     className: string;
 }
 
-const Innholdmeny: FunctionComponent<Props> = (props) => {
+const Innholdmeny: FunctionComponent<Props & RouteComponentProps> = (props) => {
     const { meny, sectionFocus, className } = props;
     const cls = BEMHelper(className);
     return (
@@ -30,7 +31,12 @@ const Innholdmeny: FunctionComponent<Props> = (props) => {
                                     sectionFocus === index ? 'bold' : ''
                                 )}
                                 key={index}
-                                onClick={() => registrerMenyvalg(lenke._key)}
+                                onClick={() => {
+                                    if (window.location.pathname === '/tiltak/sommerjobb') {
+                                        props.history.push('/tiltak/sommerjobb/');
+                                    }
+                                    registrerMenyvalg(lenke._key);
+                                }}
                             >
                                 {lenke?.linkIcon?.asset?._ref && (
                                     <div className={cls.element('lenke-ikon')}>
@@ -62,4 +68,4 @@ const Innholdmeny: FunctionComponent<Props> = (props) => {
         </div>
     );
 };
-export default Innholdmeny;
+export default withRouter(Innholdmeny);
