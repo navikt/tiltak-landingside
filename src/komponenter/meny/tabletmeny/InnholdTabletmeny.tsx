@@ -6,6 +6,7 @@ import LenkeTekst from '../komponenter/LenkeTekst';
 import KnappBase from 'nav-frontend-knapper';
 import { Meny } from '../../../types/SanityTypes';
 import BEMHelper from '../../../utils/bem';
+import { registrerMenyvalg } from '../../../utils/amplitude-utils';
 
 interface Props {
     meny: Meny;
@@ -41,6 +42,7 @@ const InnholdTabletmeny: FunctionComponent<Props> = (props) => {
                                     onTouchStart={() => displayLabel(index)}
                                     onTouchMove={() => removeLabel()}
                                     onTouchEnd={() => removeLabel()}
+                                    onClick={() => registrerMenyvalg(lenke._key)}
                                 >
                                     {lenke?.linkIcon?.asset?._ref && (
                                         <div

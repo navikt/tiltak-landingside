@@ -6,6 +6,7 @@ import LenkeTekst from '../komponenter/LenkeTekst';
 import KnappBase from 'nav-frontend-knapper';
 import { Meny } from '../../../types/SanityTypes';
 import BEMHelper from '../../../utils/bem';
+import { registrerMenyvalg } from '../../../utils/amplitude-utils';
 
 interface Props {
     meny: Meny;
@@ -29,6 +30,7 @@ const Innholdmeny: FunctionComponent<Props> = (props) => {
                                     sectionFocus === index ? 'bold' : ''
                                 )}
                                 key={index}
+                                onClick={() => registrerMenyvalg(lenke._key)}
                             >
                                 {lenke?.linkIcon?.asset?._ref && (
                                     <div className={cls.element('lenke-ikon')}>

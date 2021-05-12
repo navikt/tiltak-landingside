@@ -5,6 +5,7 @@ import { Normaltekst } from 'nav-frontend-typografi';
 import LenkeTekst from '../komponenter/LenkeTekst';
 import { Meny } from '../../../types/SanityTypes';
 import BEMHelper from '../../../utils/bem';
+import { registrerMenyvalg } from '../../../utils/amplitude-utils';
 
 interface Props {
     meny: Meny;
@@ -28,6 +29,7 @@ const InnholdMobilmeny: FunctionComponent<Props> = (props) => {
                                     sectionFocus === index ? 'bold' : ''
                                 )}
                                 key={index}
+                                onClick={() => registrerMenyvalg(lenke._key)}
                             >
                                 {lenke?.linkIcon?.asset?._ref && (
                                     <div
