@@ -3,7 +3,7 @@
         background-color: white;
         width: 16rem;
         position: sticky;
-        top: 15rem;
+        top: 10rem;
         margin-bottom: 0.75rem;
         border-radius: 4px;
         height: fit-content;
@@ -41,7 +41,13 @@
     }
 
     &__button-container {
-        margin-left: 1rem;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        & > button {
+            margin-bottom: 1rem;
+            padding: 0.5rem 0.75rem;
+        }
     }
 
     &__lenke {

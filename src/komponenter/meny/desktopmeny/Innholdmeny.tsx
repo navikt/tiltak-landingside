@@ -58,6 +58,11 @@ const Innholdmeny: FunctionComponent<Props & RouteComponentProps> = (props) => {
                             <React.Fragment key={index}>
                                 <KnappBase
                                     type={(innhold.knapp.buttontype[0] as KnappBaseType) || 'hoved'}
+                                    onClick={() =>
+                                        innhold?.knapp?.url
+                                            ? (window.location.href = innhold.knapp.url)
+                                            : void 0
+                                    }
                                 >
                                     {innhold.knapp.tekst}
                                 </KnappBase>
