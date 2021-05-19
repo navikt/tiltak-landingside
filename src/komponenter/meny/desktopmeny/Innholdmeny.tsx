@@ -23,7 +23,6 @@ const Innholdmeny: FunctionComponent<Props & RouteComponentProps> = (props) => {
             <div className={cls.element('lenke-wrapper')}>
                 {meny.Menypunkter &&
                     meny.Menypunkter.map((lenke, index) => {
-                        console.log('lenke: ', lenke.linkTitle, lenke._key);
                         return (
                             <Lenke
                                 href={lenke.path.current ?? '/#'}
