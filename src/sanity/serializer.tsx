@@ -375,5 +375,8 @@ export const serializers = {
             const farge = props.mark ? props.mark.hex : '#ffffff';
             return <span style={{ backgroundColor: farge }}>{props.children}</span>;
         },
+        tlf: (props: any) => {
+            return <a href={`tel:${props?.children[0] ?? ''}`}>{props?.children[0] ?? ''}</a>;
+        },
     },
 };
