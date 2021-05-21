@@ -30,6 +30,7 @@ import {
 } from '../types/Component';
 import { env } from '../utils/fetch-utils';
 import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel';
+import EksternLinkIkon from '../assets/ikoner/EksternLinkIkon';
 
 interface SerializerNodeTypes {
     node:
@@ -377,6 +378,23 @@ export const serializers = {
         },
         tlf: (props: any) => {
             return <a href={`tel:${props?.children[0] ?? ''}`}>{props?.children[0] ?? ''}</a>;
+        },
+        externalLink: (props: any) => {
+            console.log('externalLink', props);
+
+            return (
+                <a href={props?.mark?.href ?? ''}>
+                    {props?.children[0] ?? ''}
+                    <span
+                        style={{
+                            paddingLeft: '0.5rem',
+                            marginTop: '0.125rem',
+                        }}
+                    >
+                        <EksternLinkIkon width="1rem" height="1rem" />
+                    </span>
+                </a>
+            );
         },
     },
 };
