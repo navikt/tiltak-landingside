@@ -4,7 +4,7 @@
         left: 0;
         width: 3rem;
         top: 15rem;
-        margin-bottom: 35rem;
+        margin-bottom: 39rem;
     }
 
     &__tablet-anchor {
@@ -54,6 +54,18 @@
                 }
                 &__lenke-label {
                     display: none !important;
+                }
+                &__button-container {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    overflow: hidden;
+
+                    & > button {
+                        &:nth-child(1) {
+                            margin-bottom: 0.75rem;
+                        }
+                    }
                 }
             }
         }
@@ -156,6 +168,7 @@
         border-radius: 0.28571429rem;
         display: none;
         border: 0.5px solid;
+        z-index: 120;
 
         &:before {
             content: '';
@@ -189,6 +202,15 @@
         }
     }
     &__button-container {
-        display: none;
+        overflow: hidden;
+        white-space: nowrap;
+        width: 0;
+        text-overflow: ellipsis;
+
+        & > button {
+            &:nth-child(1) {
+                margin-bottom: 0.75rem;
+            }
+        }
     }
 }

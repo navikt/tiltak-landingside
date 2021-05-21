@@ -61,6 +61,7 @@ const Mobilmeny: FunctionComponent<Props> = (props) => {
                         meny={meny}
                         sectionFocus={sectionFocus}
                         className={cls.className}
+                        setOpen={setOpen}
                     />
                 </div>
             </div>

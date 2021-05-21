@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import MenyIkon from '../../../assets/ikoner/MenyIkon';
 import { Meny } from '../../../types/SanityTypes';
 import BEMHelper from '../../../utils/bem';
@@ -17,18 +17,27 @@ const Tabletmeny: FunctionComponent<Props> = (props) => {
     const { meny } = props;
     const [open, setOpen] = useState<boolean>(false);
     const [sectionFocus, setSectionFocus] = useState<number>(0);
+    const [heightposition, setHeightposition] = useState<number>(window.innerHeight > 850 ? 15 : 0);
 
     const debounceSectionFocus = debounce(
         () => setFocusIndex(meny.Menypunkter, setSectionFocus, 200),
         10
     );
 
+    useEffect(() => {
+        const resizehandler = () => {
+            setHeightposition(window.innerHeight > 850 ? 15 : 0);
+        };
+        window.addEventListener('resize', resizehandler);
+        return () => window.removeEventListener('resize', resizehandler);
+    });
+
     window.onscroll = function () {
         debounceSectionFocus();
     };
 
     return (
-        <div className={cls.element('tablet-container')}>
+        <div className={cls.element('tablet-container')} style={{ top: `${heightposition}rem` }}>
             <div className={cls.element('tablet-anchor')}>
                 <div className={cls.element('tablet-wrapper', open ? 'open' : '')}>
                     <div className={cls.element('header-ikon')}>
@@ -42,6 +51,7 @@ const Tabletmeny: FunctionComponent<Props> = (props) => {
                         meny={meny}
                         sectionFocus={sectionFocus}
                         className={cls.className}
+                        setOverflow={heightposition === 0}
                     />
                 </div>
             </div>

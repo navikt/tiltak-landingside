@@ -13,7 +13,6 @@
         & > p {
             font-weight: 600;
         }
-
         &:first-letter {
             text-transform: capitalize;
         }
@@ -82,7 +81,7 @@
                 &__innhold-container {
                     transition: 0.3s;
                     height: 15rem;
-                    padding: 0 0.5rem 2rem 2rem;
+                    padding: 0.5rem 0.5rem 2rem 2.75rem;
                 }
             }
         }
@@ -139,6 +138,25 @@
                 white-space: nowrap;
                 transition: 0.3s;
                 width: 0;
+            }
+        }
+    }
+
+    &__button-wrapper {
+        display: flex;
+        flex-direction: column;
+
+        & > button {
+            text-transform: lowercase;
+            display: inline-block;
+            width: 80%;
+            padding: 0.5rem;
+
+            &:first-letter {
+                text-transform: uppercase;
+            }
+            &:nth-child(1) {
+                margin-bottom: 0.75rem;
             }
         }
     }
