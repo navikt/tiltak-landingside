@@ -31,6 +31,8 @@ import {
 import { env } from '../utils/fetch-utils';
 import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel';
 import EksternLinkIkon from '../assets/ikoner/EksternLinkIkon';
+import { ExternalLink, HighlightColor, PhoneNumber } from '../types/marks';
+import { registrerLenketrykk } from '../utils/amplitude-utils';
 
 interface SerializerNodeTypes {
     node:
@@ -319,7 +321,6 @@ const whitespace = (innhold: BlockTypeNode): React.ReactElement => (
 );
 
 const serializeSectionContent = (props: any) => {
-    console.log('serializeSectionContent', props);
     return null;
 };
 
@@ -328,9 +329,9 @@ const blockSerializer = (block: BlockTypeNode) => {
     return <TypoComponent>{block.children}</TypoComponent>;
 };
 
-const imageSerializer = (props: any) => (
-    <img src={sanityImageLink(props.node.asset._ref)} alt={'illustrasjon'} />
-);
+const imageSerializer = (props: any) => {
+    return <img src={sanityImageLink(props.node.asset._ref)} alt={'illustrasjon'} />;
+};
 
 export const sanityImageLink = (imageId: string) => {
     const imageFragments = imageId.split('-');
@@ -341,14 +342,13 @@ export const sanityImageLink = (imageId: string) => {
         .concat(imageFragments[3])}`;
 };
 
-const serializeCheck = (block: any) => {
+const serializeCheck = (block: BlockTypeNode) => {
     return block.children[block.children.length - 1] !== ''
         ? blockSerializer(block)
         : whitespace(block);
 };
 
 const bannerSerializer = (props: any) => {
-    console.log('banner serializer: ', props);
     return null;
 };
 
@@ -369,30 +369,46 @@ export const serializers = {
         alertstripe: alertstripeSerializer,
     },
     marks: {
-        highlightGreen: (props: any) => (
-            <span style={{ backgroundColor: '#CDE7D8' }}>{props.children}</span>
+        highlightGreen: (props: HighlightColor) => (
+            <span style={{ backgroundColor: '#CDE7D8' }}>{props.children ?? ''}</span>
         ),
-        color: (props: any) => {
-            const farge = props.mark ? props.mark.hex : '#ffffff';
-            return <span style={{ backgroundColor: farge }}>{props.children}</span>;
-        },
-        tlf: (props: any) => {
-            return <a href={`tel:${props?.children[0] ?? ''}`}>{props?.children[0] ?? ''}</a>;
-        },
-        externalLink: (props: any) => {
-            console.log('externalLink', props);
-
+        color: (props: any) => (
+            <span style={{ backgroundColor: props.mark?.hex ?? '#ffffff' }}>{props.children}</span>
+        ),
+        tlf: (props: PhoneNumber) => (
+            <a href={`tel:${props?.children[0] ?? ''}`}>{props?.children[0] ?? ''}</a>
+        ),
+        externalLink: (props: ExternalLink) => (
+            <a
+                href={props?.mark?.href ?? ''}
+                onClick={(event) => {
+                    event.preventDefault();
+                    registrerLenketrykk(props._key);
+                    props?.mark?.href ? (window.location.href = props.mark.href) : void 0;
+                }}
+            >
+                {props?.children[0] ?? ''}
+                <span
+                    style={{
+                        paddingLeft: '0.5rem',
+                        marginTop: '0.125rem',
+                    }}
+                >
+                    <EksternLinkIkon width="1rem" height="1rem" />
+                </span>
+            </a>
+        ),
+        link: (props: any) => {
             return (
-                <a href={props?.mark?.href ?? ''}>
+                <a
+                    href={props?.mark?.href ?? ''}
+                    onClick={(event) => {
+                        event.preventDefault();
+                        registrerLenketrykk(props._key);
+                        props?.mark?.href ? (window.location.href = props.mark.href) : void 0;
+                    }}
+                >
                     {props?.children[0] ?? ''}
-                    <span
-                        style={{
-                            paddingLeft: '0.5rem',
-                            marginTop: '0.125rem',
-                        }}
-                    >
-                        <EksternLinkIkon width="1rem" height="1rem" />
-                    </span>
                 </a>
             );
         },

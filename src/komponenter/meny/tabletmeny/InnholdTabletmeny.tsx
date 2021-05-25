@@ -106,6 +106,15 @@ const InnholdTabletmeny: FunctionComponent<Props & RouteComponentProps> = (props
                             <React.Fragment key={index}>
                                 <KnappBase
                                     type={(innhold.knapp.buttontype[0] as KnappBaseType) || 'hoved'}
+                                    onClick={() => {
+                                        if (window.location.pathname === '/tiltak/sommerjobb') {
+                                            props.history.push('/tiltak/sommerjobb/');
+                                        }
+                                        registrerMenyvalg(innhold._key);
+                                        innhold?.knapp?.url
+                                            ? (window.location.href = innhold.knapp.url)
+                                            : void 0;
+                                    }}
                                 >
                                     {innhold.knapp.tekst}
                                 </KnappBase>

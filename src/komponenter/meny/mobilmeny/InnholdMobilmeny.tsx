@@ -69,6 +69,7 @@ const InnholdMobilmeny: FunctionComponent<Props & RouteComponentProps> = (props)
                                         if (window.location.pathname === '/tiltak/sommerjobb') {
                                             props.history.push('/tiltak/sommerjobb/');
                                         }
+                                        registrerMenyvalg(innhold._key);
                                         innhold?.knapp?.url
                                             ? (window.location.href = innhold.knapp.url)
                                             : void 0;
