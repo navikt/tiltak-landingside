@@ -31,8 +31,9 @@ import {
 import { env } from '../utils/fetch-utils';
 import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel';
 import EksternLinkIkon from '../assets/ikoner/EksternLinkIkon';
-import { ExternalLink, HighlightColor, PhoneNumber } from '../types/marks';
+import { Link, HighlightColor, PhoneNumber } from '../types/marks';
 import { registrerLenketrykk } from '../utils/amplitude-utils';
+import Lenke from 'nav-frontend-lenker';
 
 interface SerializerNodeTypes {
     node:
@@ -376,14 +377,21 @@ export const serializers = {
             <span style={{ backgroundColor: props.mark?.hex ?? '#ffffff' }}>{props.children}</span>
         ),
         tlf: (props: PhoneNumber) => (
-            <a href={`tel:${props?.children[0] ?? ''}`}>{props?.children[0] ?? ''}</a>
+            <Lenke
+                href={`tel:${props?.children[0] ?? ''}`}
+                onClick={() =>
+                    registrerLenketrykk('telefon:'.concat(props?.children[0] ?? 'manglerNr'))
+                }
+            >
+                {props?.children[0] ?? ''}
+            </Lenke>
         ),
-        externalLink: (props: ExternalLink) => (
-            <a
+        externalLink: (props: Link) => (
+            <Lenke
                 href={props?.mark?.href ?? ''}
                 onClick={(event) => {
                     event.preventDefault();
-                    registrerLenketrykk(props._key);
+                    registrerLenketrykk(props.mark.linkid ?? props._key);
                     props?.mark?.href ? (window.location.href = props.mark.href) : void 0;
                 }}
             >
@@ -396,20 +404,20 @@ export const serializers = {
                 >
                     <EksternLinkIkon width="1rem" height="1rem" />
                 </span>
-            </a>
+            </Lenke>
         ),
-        link: (props: any) => {
+        link: (props: Link) => {
             return (
-                <a
+                <Lenke
                     href={props?.mark?.href ?? ''}
                     onClick={(event) => {
                         event.preventDefault();
-                        registrerLenketrykk(props._key);
+                        registrerLenketrykk(props.mark.linkid ?? props._key);
                         props?.mark?.href ? (window.location.href = props.mark.href) : void 0;
                     }}
                 >
                     {props?.children[0] ?? ''}
-                </a>
+                </Lenke>
             );
         },
     },

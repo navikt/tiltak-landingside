@@ -1,7 +1,8 @@
-export interface ExternalLink {
+export interface Link {
     children: string[];
     mark: {
         href: string;
+        linkid: string;
         _key: string;
         _type: string;
     };
