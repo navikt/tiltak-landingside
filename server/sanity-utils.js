@@ -6,7 +6,7 @@ const client = sanityClient({
     projectId: process.env.SANITY_PROJECT_ID.trim(),
     dataset: process.env.SANITY_DATASET.trim(),
     token: process.env.SANITY_TOKEN.trim(),
-    useCdn: false,
+    useCdn: process.env.NODE_ENV === 'production',
 });
 
 const mainCacheInnholdKey = 'permittering-innhold';

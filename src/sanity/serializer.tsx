@@ -335,6 +335,7 @@ const imageSerializer = (props: any) => {
 };
 
 export const sanityImageLink = (imageId: string) => {
+    console.log('imageId:', imageId);
     const imageFragments = imageId.split('-');
     return `https://cdn.sanity.io/images/${env[0]}/${env[1]}/${imageFragments[1]
         .concat('-')
